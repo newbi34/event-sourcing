@@ -1,0 +1,61 @@
+Članek                                              | The dark side of event sourcing: Managing data conversion
+Kateri problem rešuje?                              | Problem pretvarjanja podatkov v event sourcing sistemih ko pride do spremembe podatkovne sheme
+Kakšen pristop ali metodo uporabi?                  | Predlaga 5 strategij za pretvorbo podatkov (verzioniranje, upcasting, lena transformacija, transformacija na mestu, kopiranje pred transformacijo) ter jih ovrednoti glede na stabilnost, zanesljivost, vzdrževanje in hitrost
+Kako je bil evalviran (okolje, podatki, metrike)?   | Evalvacija je bazirana na intervijujih 3 strokovnjakov, nobenih podatkov ali metrik ni navedenih konkretno
+Kakšni so rezultati?                                | navedba strategij, delna implementacija event stora z avtomatiziranim reševanjem spremembe sheme
+Katere so omejitve?                                 | Potrebna je bolj sistematično ovrednotenje uporabljenih strategij, tudi v kombinaciji strategij za postavitev brez izpada (zero downtime)
+Kaj avtorji navajajo kot nadaljnje delo?            | raziskava ponovne gradnje projekcij in pogostosti sprememb podatkovnega modela
+
+
+Članek                                              | An empirical characterization of event sourced systems and their schema evolution — Lessons from industry
+Kateri problem rešuje?                              | Praktične izzive pri implementaciji event sourced sistemov, obravnava pomanjkanje akademske literature na tem področju (grey literature)
+Kakšen pristop ali metodo uporabi?                  | intervijuji z 25 razvijalci ki so delal na 19 različnih event sourcing sistemih
+Kako je bil evalviran (okolje, podatki, metrike)?   | evalvacija 19 sistemov glede na strokovnjake, metrike: velikost in rast event stora, in velikost sheme
+Kakšni so rezultati?                                | Temeljit pregled ES sistemov, razlogi za njihovo uporabo, njihove težave ter 5 strategij za reševanje problema evolucije sheme    
+Katere so omejitve?                                 | Ni posplošeno na vse sisteme, strokovnjaki niso bili naključno izbrani kar lahko predstavlja nek bias
+Kaj avtorji navajajo kot nadaljnje delo?            | Raziskava ponovne gradnje prokejcij, pomanjkanja tehnologije in privatnosti
+
+
+Članek                                              | Self‑adapting data migration in the context of schema evolution in NoSQL databases
+Kateri problem rešuje?                              | Problem hitrega spreminjanja podatkovne sheme v agilnem razvoju in migracije podatkov
+Kakšen pristop ali metodo uporabi?                  | Pristop samo-prilagodljive migracije podatkov z različnimi strategijami (lazy, eager, incremental, predictive(hot data))
+Kako je bil evalviran (okolje, podatki, metrike)?   | Migcast in Darwin ki se povezujeta na baze. Metrike so latenca pri branju, stroški migracije ter precision in recall
+Kakšni so rezultati?                                | Visoka učinkovitost samoprilagodljivega pristopa 
+Katere so omejitve?                                 | /
+Kaj avtorji navajajo kot nadaljnje delo?            | Različne strategije znotraj predivtive strategije (requirement-adaptive, relevance-adaptive, efficiency-adaptive)
+
+
+Članek                                              | Developing a Performance Evaluation Benchmark for Event Sourcing Databases
+Kateri problem rešuje?                              |
+Kakšen pristop ali metodo uporabi?                  |
+Kako je bil evalviran (okolje, podatki, metrike)?   |
+Kakšni so rezultati?                                |
+Katere so omejitve?                                 |
+Kaj avtorji navajajo kot nadaljnje delo?            |
+
+
+Članek                                              | Efficiently handling data schema changes in an event sourced system
+Kateri problem rešuje?                              |
+Kakšen pristop ali metodo uporabi?                  |
+Kako je bil evalviran (okolje, podatki, metrike)?   |
+Kakšni so rezultati?                                |
+Katere so omejitve?                                 |
+Kaj avtorji navajajo kot nadaljnje delo?            |
+
+
+Članek                                              |
+Kateri problem rešuje?                              |
+Kakšen pristop ali metodo uporabi?                  |
+Kako je bil evalviran (okolje, podatki, metrike)?   |
+Kakšni so rezultati?                                |
+Katere so omejitve?                                 |
+Kaj avtorji navajajo kot nadaljnje delo?            |
+
+
+Članek                                              |
+Kateri problem rešuje?                              |
+Kakšen pristop ali metodo uporabi?                  |
+Kako je bil evalviran (okolje, podatki, metrike)?   |
+Kakšni so rezultati?                                |
+Katere so omejitve?                                 |
+Kaj avtorji navajajo kot nadaljnje delo?            |
