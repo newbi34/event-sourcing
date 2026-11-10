@@ -1,7 +1,7 @@
 Članek                                              | The dark side of event sourcing: Managing data conversion
 Kateri problem rešuje?                              | Problem pretvarjanja podatkov v event sourcing sistemih ko pride do spremembe podatkovne sheme
 Kakšen pristop ali metodo uporabi?                  | Predlaga 5 strategij za pretvorbo podatkov (verzioniranje, upcasting, lena transformacija, transformacija na mestu, kopiranje pred transformacijo) ter jih ovrednoti glede na stabilnost, zanesljivost, vzdrževanje in hitrost
-Kako je bil evalviran (okolje, podatki, metrike)?   | Evalvacija je bazirana na intervijujih 3 strokovnjakov, nobenih podatkov ali metrik ni navedenih konkretno
+Kako je bil evalviran (okolje, podatki, metrike)?   | Evalvacija je bazirana na intervijujih 3 strokovnjakov, metrike po ISO/IEC 25010:2011
 Kakšni so rezultati?                                | navedba strategij, delna implementacija event stora z avtomatiziranim reševanjem spremembe sheme
 Katere so omejitve?                                 | Potrebna je bolj sistematično ovrednotenje uporabljenih strategij, tudi v kombinaciji strategij za postavitev brez izpada (zero downtime)
 Kaj avtorji navajajo kot nadaljnje delo?            | raziskava ponovne gradnje projekcij in pogostosti sprememb podatkovnega modela
@@ -26,30 +26,21 @@ Kaj avtorji navajajo kot nadaljnje delo?            | Različne strategije znotr
 
 
 Članek                                              | Developing a Performance Evaluation Benchmark for Event Sourcing Databases
-Kateri problem rešuje?                              |
-Kakšen pristop ali metodo uporabi?                  |
-Kako je bil evalviran (okolje, podatki, metrike)?   |
-Kakšni so rezultati?                                |
-Katere so omejitve?                                 |
-Kaj avtorji navajajo kot nadaljnje delo?            |
+Kateri problem rešuje?                              | Kako testirati podatkovno bazo za ES sisteme
+Kakšen pristop ali metodo uporabi?                  | Testiranje hitrosti insert operacije, latence kreiranja projekcije in dolgoročnega delovanja ob rasti podatkov
+Kako je bil evalviran (okolje, podatki, metrike)?   | Load generation z Nbomber, testiranje na PostgreSQL, EventStoreDB in MongoDB, metrike: request per second in latency nastanka projekcije 
+Kakšni so rezultati?                                | PostgreSQL in MongoDB neprimerna za implementacije ES sistemov, EventStoreDB dober
+Katere so omejitve?                                 | Preproste projekcije, delovanje ob rasti podatkov zaradi počasnosti PostgreSQL in MongoDB ni bilo izvedeno
+Kaj avtorji navajajo kot nadaljnje delo?            | /
 
 
-Članek                                              | Efficiently handling data schema changes in an event sourced system
-Kateri problem rešuje?                              |
-Kakšen pristop ali metodo uporabi?                  |
-Kako je bil evalviran (okolje, podatki, metrike)?   |
-Kakšni so rezultati?                                |
-Katere so omejitve?                                 |
-Kaj avtorji navajajo kot nadaljnje delo?            |
-
-
-Članek                                              |
-Kateri problem rešuje?                              |
-Kakšen pristop ali metodo uporabi?                  |
-Kako je bil evalviran (okolje, podatki, metrike)?   |
-Kakšni so rezultati?                                |
-Katere so omejitve?                                 |
-Kaj avtorji navajajo kot nadaljnje delo?            |
+Članek                                              | Efficiently handling data schema changes in an event sourced system - Magistrsko delo
+Kateri problem rešuje?                              | Problem evolucije sheme v ES sistemih
+Kakšen pristop ali metodo uporabi?                  | Definira operacije in strategije tranformiranja podatkov ter deployment strategije 
+Kako je bil evalviran (okolje, podatki, metrike)?   | Posvet z 3 Afas razvijalci in 3 cqrs strokovnjaki, iste metrike kot pri 1. članku 
+Kakšni so rezultati?                                | Opisane so strategije za deployment sistemov, ki gredo skozi evolicijo sheme z zero downtime
+Katere so omejitve?                                 | Evalvacija je bazirana na strokovnjakih in ne benchmarku
+Kaj avtorji navajajo kot nadaljnje delo?            | Benchmark strategij za spremembo podatkov
 
 
 Članek                                              |
