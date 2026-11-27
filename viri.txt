@@ -1,52 +1,92 @@
-Članek                                              | The dark side of event sourcing: Managing data conversion
+Članek                                              | The dark side of event sourcing: Managing data conversion (Dark Side)
 Kateri problem rešuje?                              | Problem pretvarjanja podatkov v event sourcing sistemih ko pride do spremembe podatkovne sheme
-Kakšen pristop ali metodo uporabi?                  | Predlaga 5 strategij za pretvorbo podatkov (verzioniranje, upcasting, lena transformacija, transformacija na mestu, kopiranje pred transformacijo) ter jih ovrednoti glede na stabilnost, zanesljivost, vzdrževanje in hitrost
-Kako je bil evalviran (okolje, podatki, metrike)?   | Evalvacija je bazirana na intervijujih 3 strokovnjakov, metrike po ISO/IEC 25010:2011
-Kakšni so rezultati?                                | navedba strategij, delna implementacija event stora z avtomatiziranim reševanjem spremembe sheme
+Kakšen pristop ali metodo uporabi?                  | Predlaga 5 strategij za pretvorbo podatkov (weak schema, verzioniranje, upcasting, lena transformacija, kopiranje pred transformacijo) ter jih ovrednoti glede na stabilnost, zanesljivost, vzdrževanje in hitrost
+Kako je bil evalviran (okolje, podatki, metrike)?   | Evalvacija je bazirana na intervijujih 3 strokovnjakov, kvalitativna ocena strokovnjakov po ISO/IEC 25010:2011
+Kakšni so rezultati?                                | navedba 5 strategij in evalvacija z 4 metrikami, delna implementacija event stora z avtomatiziranim reševanjem spremembe sheme
 Katere so omejitve?                                 | Potrebna je bolj sistematično ovrednotenje uporabljenih strategij, tudi v kombinaciji strategij za postavitev brez izpada (zero downtime)
 Kaj avtorji navajajo kot nadaljnje delo?            | raziskava ponovne gradnje projekcij in pogostosti sprememb podatkovnega modela
+Popravki                                            | Avtorji ne izvedejo meritev, le eksperimente z copy-and-transform tehinko in blue-green deployment strategijo, kjer ugotovijo, da je bila migracija počasnejša kot pričakovano zaradi posodobitve query stora ter izvedena z zero downtime
 
 
-Članek                                              | An empirical characterization of event sourced systems and their schema evolution — Lessons from industry
+Članek                                              | An empirical characterization of event sourced systems and their schema evolution — Lessons from industry (Overeem et al. 2021)
 Kateri problem rešuje?                              | Praktične izzive pri implementaciji event sourced sistemov, obravnava pomanjkanje akademske literature na tem področju (grey literature)
 Kakšen pristop ali metodo uporabi?                  | intervijuji z 25 razvijalci ki so delal na 19 različnih event sourcing sistemih
-Kako je bil evalviran (okolje, podatki, metrike)?   | evalvacija 19 sistemov glede na strokovnjake, metrike: velikost in rast event stora, in velikost sheme
-Kakšni so rezultati?                                | Temeljit pregled ES sistemov, razlogi za njihovo uporabo, njihove težave ter 5 strategij za reševanje problema evolucije sheme    
+Kako je bil evalviran (okolje, podatki, metrike)?   | evalvacija 19 sistemov glede na strokovnjake, kvalitativne evalvacije ni
+Kakšni so rezultati?                                | Analiza 19 ES sistemov, razlogi za njihovo uporabo, njihove težave ter 5 strategij za reševanje problema evolucije sheme    
 Katere so omejitve?                                 | Ni posplošeno na vse sisteme, strokovnjaki niso bili naključno izbrani kar lahko predstavlja nek bias
 Kaj avtorji navajajo kot nadaljnje delo?            | Raziskava ponovne gradnje prokejcij, pomanjkanja tehnologije in privatnosti
+Priporočilo                                         | Evolucija naj se prvo zaćne z strategijami versioned events in weak schema, kasneje pa upcasting in copy-and-transform
 
 
-Članek                                              | Self‑adapting data migration in the context of schema evolution in NoSQL databases
+Članek                                              | Self‑adapting data migration in the context of schema evolution in NoSQL databases (Hillenbrand et al.)
 Kateri problem rešuje?                              | Problem hitrega spreminjanja podatkovne sheme v agilnem razvoju in migracije podatkov
 Kakšen pristop ali metodo uporabi?                  | Pristop samo-prilagodljive migracije podatkov z različnimi strategijami (lazy, eager, incremental, predictive(hot data))
 Kako je bil evalviran (okolje, podatki, metrike)?   | Migcast in Darwin ki se povezujeta na baze. Metrike so latenca pri branju, stroški migracije ter precision in recall
-Kakšni so rezultati?                                | Visoka učinkovitost samoprilagodljivega pristopa 
-Katere so omejitve?                                 | /
-Kaj avtorji navajajo kot nadaljnje delo?            | Različne strategije znotraj predivtive strategije (requirement-adaptive, relevance-adaptive, efficiency-adaptive)
+Kakšni so rezultati?                                | Eager strategija ima najnižjo latenco (3.5 ms) in najvišji strošek (400 USD), prilagodljiva strategija pa latenco (4.5 - 6 ms) in strošek migracije 270 USD
+Katere so omejitve?                                 | Vsi rezultati so pridobljeni s simulacijo Migcasta, realnih meritev z darwinom ni bilo izvedenih. Darwin je le orodje za definicijo operacij evolucije, ki ga migcast uporablja
+Kaj avtorji navajajo kot nadaljnje delo?            | Različne strategije znotraj predictive strategije (requirement-adaptive, relevance-adaptive, efficiency-adaptive)
 
 
-Članek                                              | Developing a Performance Evaluation Benchmark for Event Sourcing Databases
+Članek                                              | Developing a Performance Evaluation Benchmark for Event Sourcing Databases (Malyi & Serdyuk 2024)
 Kateri problem rešuje?                              | Kako testirati podatkovno bazo za ES sisteme
 Kakšen pristop ali metodo uporabi?                  | Testiranje hitrosti insert operacije, latence kreiranja projekcije in dolgoročnega delovanja ob rasti podatkov
 Kako je bil evalviran (okolje, podatki, metrike)?   | Load generation z Nbomber, testiranje na PostgreSQL, EventStoreDB in MongoDB, metrike: request per second in latency nastanka projekcije 
-Kakšni so rezultati?                                | PostgreSQL in MongoDB neprimerna za implementacije ES sistemov, EventStoreDB dober
+Kakšni so rezultati?                                | PostgreSQL in MongoDB neprimerna za implementacije ES sistemov (do 5 insert requests/second in latenca do 1000, enota ni podana). EventStoreDB je dober, do 130 insert requests/second in latenca 50 enot
 Katere so omejitve?                                 | Preproste projekcije, delovanje ob rasti podatkov zaradi počasnosti PostgreSQL in MongoDB ni bilo izvedeno
-Kaj avtorji navajajo kot nadaljnje delo?            | /
+Kaj avtorji navajajo kot nadaljnje delo?            | Avtorji ne navajajo nadaljega dela
 
 
-Članek                                              | Efficiently handling data schema changes in an event sourced system - Magistrsko delo
+Članek                                              | Efficiently handling data schema changes in an event sourced system - (Spoor Magistrsko delo)
 Kateri problem rešuje?                              | Problem evolucije sheme v ES sistemih
 Kakšen pristop ali metodo uporabi?                  | Definira operacije in strategije tranformiranja podatkov ter deployment strategije 
 Kako je bil evalviran (okolje, podatki, metrike)?   | Posvet z 3 Afas razvijalci in 3 cqrs strokovnjaki, iste metrike kot pri 1. članku 
-Kakšni so rezultati?                                | Opisane so strategije za deployment sistemov, ki gredo skozi evolicijo sheme z zero downtime
+Kakšni so rezultati?                                | Opisanih je 6 strategij za deployment sistemov, ki gredo skozi evolicijo sheme z zero downtime in 15 operacij tranformacije podatkov
 Katere so omejitve?                                 | Evalvacija je bazirana na strokovnjakih in ne benchmarku
 Kaj avtorji navajajo kot nadaljnje delo?            | Benchmark strategij za spremembo podatkov
 
 
-Članek                                              |
-Kateri problem rešuje?                              |
-Kakšen pristop ali metodo uporabi?                  |
-Kako je bil evalviran (okolje, podatki, metrike)?   |
-Kakšni so rezultati?                                |
-Katere so omejitve?                                 |
-Kaj avtorji navajajo kot nadaljnje delo?            |
+Članek                                              | Evolving NoSQL Databases Without Downtime (Saur et al. 2016)
+Kateri problem rešuje?                              | Online evolucija NoSQL podatkovne baze brez downtima pri nazaj nezdružljivih podatkih
+Kakšen pristop ali metodo uporabi?                  | Kvolve, redis razširitev ki leno migrira podatke
+Kako je bil evalviran (okolje, podatki, metrike)?   | Redis bench, matrike: queries per second, čas prekinitve delovanja, število lenih posodobitev na sekundo
+Kakšni so rezultati?                                | Zero downtime, v običajnem delovanju (brez posodobitev) ima kvolve ~3% časovnega overheada in 15% dodatne porabe pomnilnika. Ob sprožitvi lene migracije se zmogljivost kvolva zniža za okoli 11%
+Katere so omejitve?                                 | Ne podpira sočasnega branja več neodvisnih vnosov hkrati
+Kaj avtorji navajajo kot nadaljnje delo?            | Podpora za redis-cluster, poenostavitev pisanja transformacijskih funkcij
+
+
+Članek                                              | Automating the database schema evolution process (Curino et al. 2013)
+Kateri problem rešuje?                              | Avtomatizacija migracije podatkov in posodabljanje poizvedb v SQL bazah
+Kakšen pristop ali metodo uporabi?                  | Ogrodje PRISM z SMO (Schema Modification Operators) in ICMO (Integrity Constraints Modification Operators), ki definirata prehod iz stare v novo shemo ter SQL2SMO za samodejno pridobivanje operatorjev SMO iz migracijskih skript SQL
+Kako je bil evalviran (okolje, podatki, metrike)?   | Testi na resničnih zgodovinskih bazah z evolucijo sheme, metrike: čas prepisovanja, precision in recall
+Kakšni so rezultati?                                | 0.1 ms čas prepisovanja poizvedbe, uspešna avtomatizacija migracije podatkov, SQL2SMO dosega 100% precision (vsi pridobljeni SMO so bili pravilni) in 78% recall (delež evolucijskih korakov ki jih orodje samo prevede v SMO)
+Katere so omejitve?                                 | Samo za SQL baze
+Kaj avtorji navajajo kot nadaljnje delo?            | Izboljšana podpora zgodovini in sledljivosti podatkov (data provenance)
+
+
+Članek                                              | Managing Schema Evolution in NoSQL Data Stores (Scherzinger et al. 2013)
+Kateri problem rešuje?                              | Spreminjanja strukture podatkov v dokumentnih shrambah
+Kakšen pristop ali metodo uporabi?                  | Migracije z svojim deklarativnim jezikom za evolucijo sheme
+Kako je bil evalviran (okolje, podatki, metrike)?   | Teoretično evalviran, dokažejo da se kopiranje in preverjanje izvede v kvadratni časovni odvisnosti od števila vseh entitet v bazi
+Kakšni so rezultati?                                | Programski jezik za evolucijo shem NoSQL baz
+Katere so omejitve?                                 | Zanemarja vrednosti NULL zaradi nestrinjanja glede obravnave v stroki
+Kaj avtorji navajajo kot nadaljnje delo?            | Implementacija lazy migracij
+
+
+Vsi pregledani članki:
+The dark side of event sourcing: Managing data conversion
+An empirical characterization of event sourced systems and their schema evolution — Lessons from industry
+Managing Schema Evolution in NoSQL Data Stores
+Self-adapting data migration in the context of schema evolution in NoSQL databases
+Developing a Performance Evaluation Benchmark for Event Sourcing Databases
+Mapping CRUD to Events - Towards an object to event-sourcing framework
+Evolution of Low-Code Platforms
+Efficiently handling data schema changes in an event sourced system
+Large Language Models for Schema Evolution in Event-Sourced Systems
+Development of a rule-based LLM prompting method for high-accuracy event-schema evolution
+An empirical analysis of the co-evolution of schema and code in database applications
+Eager Schema Evolution in NoSQL Document Stores
+Automating the database schema evolution process
+Evolving NoSQL Databases Without Downtime
+Exploring CQRS and Event Sourcing: A journey into high scalability, availability, and maintainability with Windows Azure
+Understanding database schema evolution: A case study
+
